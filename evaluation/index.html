@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="./styles/main.css">
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="sidebar">
+
+        <!--DO NOT CHANGE THIS ID's-->
+        <a href="index.html">Home</a>
+        <a href="news.html">News</a>
+        <a href="search.html">Search</a>
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+
+      </div>
+    </div>
+  </body>
+
+</html>
+
+<script type="module">
+  // https://gnews.io/api/v4/search?q=example&token=API-Token
+  //https://gnews.io/api/v4/search?q=example&token=API-Token
+  // 7ee769075e387cf5e0b0faab1fac51ae
+
+  import { apiCall,appendArticles} from "./scripts/main.js";
+  async function searchnews(){
+    let response = await apiCall(`https://gnews.io/api/v4/search?q=example&token=270251627a4ac06fce02d77a8323ca16&country=in&lang=en`)
+    console.log(response)
+    response.forEach(({image,title}) => {
+
+      let div = document.createElement("div")
+        let h3 = document.createElement("h3")
+        h3.innerHTML = title
+        let img = document.createElement("img")
+        img.setAttribute("class","imgnews")
+        img.src = image
+        div.append(img,h3)
+        div.onclick=(data)=>{
+          window.location.href = "news.html"
+        }
+        main.append(div)
+    })
+  }
+  searchnews()
+</script>
