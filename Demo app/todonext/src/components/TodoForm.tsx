@@ -8,7 +8,7 @@ const TodoForm: React.FC = () => {
   const { data: todos, isSuccess, isLoading } = useGetTodosQuery();
 
   const handleSubmit = () => {
-    if (title.trim()) {
+    if (title.trim()89io0-p) {
       addTodo({ id: Math.random(), title, completed: false });
       setTitle("");
     }
